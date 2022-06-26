@@ -93,9 +93,9 @@ body {
     position: relative;
 }
 
-.header {
+.bg-header {
     position: absolute;
-    background-image: url('todo-app-master/images/bg-mobile-light.jpg'); /* TODO: Add Assets */
+    background-image: url('../images/bg-mobile-light.jpg');
     background-size: cover;
     width: 100%;
     height: 200px;
