@@ -3,3 +3,6 @@
 
 # Project folder
 todo-app-master/
+
+# .zip files
+*.zip

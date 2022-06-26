@@ -11,23 +11,102 @@
 <body>
     <div class="bg-header"></div>
     <div class="container">
-        <div class="header"></div>
+        <div class="header">
+            <h1 class="header__title">TODO</h1>
+            <img class="header__icon" src="./assets/images/icon-moon.svg" alt="Theme icon">
+        </div>
         <div class="main">
             <div class="list-head">
-                <!-- TODO: todo-item -->
+                <div class="todo-item">
+                    <label class="todo-item__checkbox">
+                        <input type="checkbox" name="checkbox" disabled="true"/>
+                        <div class="checkbox">
+                            <div class="checkbox--checked"></div>
+                        </div>
+                    </label>
+                    <input placeholder="Create a new todo..." class="todo-item__text"/>
+                    <div class="todo-item__close"></div>
+                </div>
             </div>
             <div class="todo-list">
-                <!-- TODO: todo-item -->
-                <!-- TODO: todo-item -->
-                <!-- TODO: todo-item todo-control -->
+                <!-- Todo: cover checkbox and title width div & handle click event -->
+                <div class="todo-item">
+                    <label class="todo-item__checkbox">
+                        <input type="checkbox" checked="true" name="checkbox"/>
+                        <div class="checkbox">
+                            <div class="checkbox--checked"></div>
+                        </div>
+                    </label>
+                    <div class="todo-item__text" style="text-decoration: line-through; opacity: 0.25;">Complete online JavaScript course</div>
+                    <div class="todo-item__close"></div>
+                </div>
+                <div class="todo-item">
+                    <label class="todo-item__checkbox">
+                        <input type="checkbox" name="checkbox"/>
+                        <div class="checkbox">
+                            <div class="checkbox--checked"></div>
+                        </div>
+                    </label>
+                    <div class="todo-item__text">Jog around the park 3x</div>
+                    <div class="todo-item__close"></div>
+                </div>
+                <div class="todo-item">
+                    <label class="todo-item__checkbox">
+                        <input type="checkbox" name="checkbox"/>
+                        <div class="checkbox">
+                            <div class="checkbox--checked"></div>
+                        </div>
+                    </label>
+                    <div class="todo-item__text">10 minutes meditation</div>
+                    <div class="todo-item__close"></div>
+                </div>
+                <div class="todo-item">
+                    <label class="todo-item__checkbox">
+                        <input type="checkbox" name="checkbox"/>
+                        <div class="checkbox">
+                            <div class="checkbox--checked"></div>
+                        </div>
+                    </label>
+                    <div class="todo-item__text">Read for 1 hour</div>
+                    <div class="todo-item__close"></div>
+                </div>
+                <div class="todo-item">
+                    <label class="todo-item__checkbox">
+                        <input type="checkbox" name="checkbox"/>
+                        <div class="checkbox">
+                            <div class="checkbox--checked"></div>
+                        </div>
+                    </label>
+                    <div class="todo-item__text">Pick up groceries</div>
+                    <div class="todo-item__close"></div>
+                </div>
+                <div class="todo-item">
+                    <label class="todo-item__checkbox">
+                        <input type="checkbox" name="checkbox"/>
+                        <div class="checkbox">
+                            <div class="checkbox--checked"></div>
+                        </div>
+                    </label>
+                    <div class="todo-item__text">Complete Todo App on Frontend Mentor</div>
+                    <div class="todo-item__close"></div>
+                </div>
+                <div class="todo-item todo-list__control">
+                    <div class="todo-item__control">5 items left</div>
+                    <div class="todo-item__control">Clear Completed</div>
+                </div>
             </div>
             <div class="toolbar">
-                <!-- TODO: todo-toolbar -->
+                <div class="todo-item">
+                    <div class="todo-item__toolbar todo-item__toolbar--active">All</div>
+                    <div class="todo-item__toolbar">Active</div>
+                    <div class="todo-item__toolbar">Completed</div>
+                </div>
             </div>
             <div class="drag-drop">
-                <!-- TODO: todo-drag-drop -->
+                Drag and drop to reorder list
             </div>
         </div>
     </div>
+    <!-- <img src="./todo-app-master/design/mobile-design-light.jpg"> -->
 </body>
 </html>
