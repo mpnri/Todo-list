@@ -92,6 +92,8 @@ body {
     background: var(--very-light-gray);
     position: relative;
     color: var(--very-dark-grayish-blue);
+    display: flex;
+    justify-content: center;
 }
 
 body::before { /** for margin collapsing */
@@ -108,9 +110,17 @@ body::before { /** for margin collapsing */
     z-index: -1;
 }
 
+@media (min-width: 650px) {
+    .bg-header {
+        background-image: url('../images/bg-desktop-light.jpg');
+    }
+}
+
 .container {
     margin: 1.6rem;
     /* border: 1px solid #000; */
+    width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
 }
