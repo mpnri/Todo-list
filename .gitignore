@@ -6,3 +6,11 @@ todo-app-master/
 
 # .zip files
 *.zip
+
+# Pinegrow files
+_pgbackup/
+_pginfo/
+bootstrap/
+offcanvas.css
+offcanvas.html
+pinegrow.json
