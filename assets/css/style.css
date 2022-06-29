@@ -69,6 +69,10 @@
     --dark-grayish-blue: hsl(236, 9%, 61%);
     --very-dark-grayish-blue: hsl(235, 19%, 35%);
 
+    --light-bg-image-small: url('/assets/images/bg-mobile-light.jpg');
+    --light-bg-image-large: url('/assets/images/bg-desktop-light.jpg');
+    --light-close-filter: none;
+
     /** Dark Theme */
     --very-dark-blue: hsl(235, 21%, 11%);
     --very-dark-desaturated-blue: hsl(235, 24%, 19%);
@@ -77,23 +81,37 @@
     --dark-grayish-blue: hsl(234, 11%, 52%);
     --very-dark-grayish-blue: hsl(233, 14%, 35%);
     --very-dark-grayish-blue-hover: hsl(237, 14%, 26%);
+
+    --dark-bg-image-small: url('/assets/images/bg-mobile-dark.jpg');
+    --dark-bg-image-large: url('/assets/images/bg-desktop-light.jpg');
+    --dark-close-filter: brightness(1.5);
+
+    /** Default Theme */
+    --body-background: var(--very-light-gray);
+    --body-color: var(--very-dark-grayish-blue);
+    --bg-header-small: var(--light-bg-image-small);
+    --bg-header-large: var(--light-bg-image-large);
+    --todo-card-bg-color: var(--very-light-gray);
+    --todo-card__close-filter: var(--light-close-filter);
+    --todo-card-border-color: var(--very-light-grayish-blue);
+    /* TODO: Add hover and other effects and animations */
 }
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    transition: .3s;
+    /*transition: color, .05s; /*? slow todo itemtext color transition */
 }
 
 body {
     margin: 0;
     font-size: 18px;
     font-family: 'Josefin Sans';
-    /* background: var(--very-light-gray); */
-    background: var(--very-dark-desaturated-blue);
+    background: var(--body-background);
     position: relative;
-    /* color: var(--very-dark-grayish-blue); */
-    color: var(--light-grayish-blue);
+    color: var(--body-color);
     display: flex;
     justify-content: center;
 }
@@ -105,8 +123,7 @@ body::before { /** for margin collapsing */
 
 .bg-header {
     position: absolute;
-    /* background-image: url('../images/bg-mobile-light.jpg'); */
-    background-image: url('../images/bg-mobile-dark.jpg');
+    background-image: var(--bg-header-small);
     background-size: cover;
     width: 100%;
     height: 228px;
@@ -115,8 +132,7 @@ body::before { /** for margin collapsing */
 
 @media (min-width: 650px) {
     .bg-header {
-        /* background-image: url('../images/bg-desktop-light.jpg'); */
-        background-image: url('../images/bg-desktop-dark.jpg');
+        background-image: var(--bg-header-large);
     }
     
     .todo-card__close {
@@ -160,6 +176,24 @@ body::before { /** for margin collapsing */
     align-items: center;
 }
 
+.header__icon:hover>img {
+    animation: change-theme-icon .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes change-theme-icon {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 .main {
     display: flex;
     flex-direction: column;
@@ -179,15 +213,14 @@ body::before { /** for margin collapsing */
 }
 
 .todo-card {
-    /* background-color: var(--very-light-gray); */
-    background-color: var(--very-dark-grayish-blue-hover);
+    background-color: var(--todo-card-bg-color);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     gap: 5px;
     border-radius: 6px;
-    /* padding: 1.8rem 0; */
-    /* height: 50px; */
+    /*? padding: 1.8rem 0; */
+    /*? height: 50px; */
     height: 3.8rem;
 
 }
@@ -248,22 +281,19 @@ body::before { /** for margin collapsing */
     height: 15px;
     margin: 0 8px;
     cursor: pointer;
-    /* filter : none; */
-    filter: brightness(1.5);
+    filter : var(--todo-card__close-filter);
 }
 
 .todo-list {
     display: flex;
     flex-direction: column;
-    /* box-shadow: 0 13px 15px 0px #80808036; */
-    box-shadow: 0 3px 15px 0px #80808036;
+    box-shadow: 0 5px 15px 0px #80808036;
     border-radius: 6px;
     overflow: hidden;
 }
 
 .todo-list .todo-card {
-    /* border-bottom: 1px solid var(--very-light-grayish-blue); */
-    border-bottom: 1px solid var(--very-dark-grayish-blue);
+    border-bottom: 1px solid var(--todo-card-border-color);
     border-radius: 0;
 }
 

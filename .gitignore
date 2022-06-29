@@ -10,7 +10,9 @@ todo-app-master/
 # Pinegrow files
 _pgbackup/
 _pginfo/
-bootstrap/
-offcanvas.css
-offcanvas.html
 pinegrow.json
+
+# npm & parcel files
+node_modules/
+dist/
+.parcel-cache/

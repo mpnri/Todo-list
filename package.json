@@ -1,0 +1,15 @@
+{
+  "name": "todo-app",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
