@@ -83,8 +83,8 @@
     --very-dark-grayish-blue-hover: hsl(237, 14%, 26%);
 
     --dark-bg-image-small: url('/assets/images/bg-mobile-dark.jpg');
-    --dark-bg-image-large: url('/assets/images/bg-desktop-light.jpg');
-    --dark-close-filter: brightness(1.5);
+    --dark-bg-image-large: url('/assets/images/bg-desktop-dark.jpg');
+    --dark-close-filter: brightness(3);
 
     /** Default Theme */
     --body-background: var(--very-light-gray);
@@ -92,6 +92,7 @@
     --bg-header-small: var(--light-bg-image-small);
     --bg-header-large: var(--light-bg-image-large);
     --todo-card-bg-color: var(--very-light-gray);
+    --todo-card-bg-color-hover: var(--light-grayish-blue-hover);
     --todo-card__close-filter: var(--light-close-filter);
     --todo-card-border-color: var(--very-light-grayish-blue);
     /* TODO: Add hover and other effects and animations */
@@ -201,6 +202,7 @@ body::before { /** for margin collapsing */
 }
 
 .list-head .todo-card__close{
+    transition: none;
     visibility: hidden;
 }
 
@@ -275,6 +277,7 @@ body::before { /** for margin collapsing */
 }
 
 .todo-card__close {
+    transition: none;
     background-image: url('../images/icon-cross.svg');
     background-size: cover;
     width: 15px;
@@ -295,6 +298,11 @@ body::before { /** for margin collapsing */
 .todo-list .todo-card {
     border-bottom: 1px solid var(--todo-card-border-color);
     border-radius: 0;
+}
+
+.todo-list .todo-card:not(:last-child):hover{
+    background-color: #e4e1e1;
+    background-color : var(--todo-card-bg-color-hover);
 }
 
 .todo-list .todo-card:last-child {

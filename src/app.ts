@@ -13,6 +13,7 @@ const styles = {
         '--bg-header-small': 'var(--dark-bg-image-small)',
         '--bg-header-large': 'var(--dark-bg-image-large)',
         '--todo-card-bg-color': 'var(--very-dark-grayish-blue-hover)',
+        '--todo-card-bg-color-hover': 'var(--very-dark-grayish-blue)',
         '--todo-card__close-filter': 'var(--dark-close-filter)',
         '--todo-card-border-color': 'var(--very-dark-grayish-blue)',
     },
@@ -22,6 +23,7 @@ const styles = {
         '--bg-header-small': 'var(--light-bg-image-small)',
         '--bg-header-large': 'var(--light-bg-image-large)',
         '--todo-card-bg-color': 'var(--very-light-gray)',
+        '--todo-card-bg-color-hover': 'var(--light-grayish-blue-hover)',
         '--todo-card__close-filter': 'var(--light-close-filter)',
         '--todo-card-border-color': 'var(--very-light-grayish-blue)',
     },
@@ -39,6 +41,7 @@ document.querySelector('.header__icon')?.addEventListener('click', e => {
 
 
 renderTheme();
+
 
 function renderTheme() {
     Object.keys(styles[theme]).forEach(key => document.documentElement.style.setProperty(key, styles[theme][key]));
