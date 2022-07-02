@@ -14,7 +14,7 @@ const styles = {
         '--bg-header-large': 'var(--dark-bg-image-large)',
         '--todo-card-bg-color': 'var(--very-dark-grayish-blue-hover)',
         '--todo-card-bg-color-hover': 'var(--very-dark-grayish-blue)',
-        '--todo-card__action-filter': 'var(--dark-action-filter)', //* deleted
+        '--todo-card__action-filter': 'var(--dark-action-filter)',
         '--todo-card-border-color': 'var(--very-dark-grayish-blue)',
     },
     [THEMES.LIGHT]: {
@@ -24,7 +24,7 @@ const styles = {
         '--bg-header-large': 'var(--light-bg-image-large)',
         '--todo-card-bg-color': 'var(--very-light-gray)',
         '--todo-card-bg-color-hover': 'var(--light-grayish-blue-hover)',
-        '--todo-card__action-filter': 'var(--light-action-filter)', //* deleted
+        '--todo-card__action-filter': 'var(--light-action-filter)',
         '--todo-card-border-color': 'var(--very-light-grayish-blue)',
     },
 }

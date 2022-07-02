@@ -102,7 +102,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    transition: .3s;
+    transition: .5s;
     /*transition: color, .05s; /*? slow todo item text color transition */
 }
 
@@ -216,6 +216,11 @@ body::before { /** for margin collapsing */
 
 .list-head .todo-item__text {
     height: 100%;
+    transition: 1s;
+}
+
+.list-head .todo-item__text:focus {
+    font-size: 16px;
 }
 
 .todo-card {
@@ -296,7 +301,7 @@ body::before { /** for margin collapsing */
 }
 
 .todo-card__action:hover > div {
-    
+    filter: brightness(1);
 }
 
 .close-icon {
@@ -307,7 +312,7 @@ body::before { /** for margin collapsing */
     height: 15px;
     margin: 0 8px;
     cursor: pointer;
-    /* filter : var(--todo-card__action-filter); */
+    filter : var(--todo-card__action-filter);
 }
 
 .todo-list {
@@ -342,12 +347,30 @@ body::before { /** for margin collapsing */
 
 .todo-list__control {
     justify-content: space-between;
-    padding: 1.8rem 1.5rem;
+    padding-inline: 1.5rem;
 }
 
 .todo-card__control {
     color: var(--dark-grayish-blue);
     font-size: 14px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.todo-card__btn {
+    padding-inline: 8px;
+}
+
+.todo-card__btn:hover {
+    background-color: var(--todo-card-bg-color-hover);
+    cursor: pointer;
+}
+
+.todo-card__btn:active {
+    background-color: #a7eef766;
+    filter: drop-shadow(4px 16px 20px rgb(0, 217, 255)) invert(5%);
+    transition: none;
 }
 
 .toolbar {
@@ -378,6 +401,11 @@ body::before { /** for margin collapsing */
 
 .todo-card__toolbar:not(.todo-card__toolbar--active):hover {
     background-color: var(--todo-card-bg-color-hover);
+}
+
+.todo-card__toolbar:not(.todo-card__toolbar--active):active {
+    filter: contrast(700%);
+    transition: 0.3s;
 }
 
 .drag-drop {
