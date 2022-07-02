@@ -106,6 +106,15 @@ document.querySelector('.toolbar>.todo-card')?.addEventListener('click', e => {
     renderItems();
 });
 
+let timer;
+document.getElementById('add-todo')?.addEventListener('input', e => {
+    clearTimeout(timer);
+    document.getElementById('spinner')?.classList.add('loader-icon');
+    timer = setTimeout(() => {
+        document.getElementById('spinner')?.classList.remove('loader-icon');
+    }, 2000);
+});
+
 renderTheme();
 renderItems();
 

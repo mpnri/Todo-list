@@ -105,8 +105,8 @@
     /* -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     -o-transition: 0.5s; */
-    
-    transition-property: color ,background-color, box-shadow, border, filter, background;
+
+    transition-property: color, background-color, box-shadow, border, filter, background;
     transition-duration: 0.5s;
     /*transition: color, .05s; /*? slow todo item text color transition */
 }
@@ -122,7 +122,8 @@ body {
     justify-content: center;
 }
 
-body::before { /** for margin collapsing */
+body::before {
+    /** for margin collapsing */
     content: ' ';
     display: table;
 }
@@ -140,12 +141,12 @@ body::before { /** for margin collapsing */
     .bg-header {
         background-image: var(--bg-header-large);
     }
-    
-    .todo-card__action > div {
+
+    .todo-card__action>div:not(#spinner) {
         visibility: hidden;
     }
 
-    .todo-list .todo-card:hover .todo-card__action > div {
+    .todo-list .todo-card:hover .todo-card__action>div {
         visibility: visible;
     }
 }
@@ -210,13 +211,12 @@ body::before { /** for margin collapsing */
     box-shadow: 0px 1px 12px 0px #707070;
 }
 
-.list-head .todo-card__action{
-    transition: none;
-    visibility: hidden;
+.list-head .todo-item__checkbox {
+    cursor: default;
 }
 
-.list-head .todo-item__checkbox{
-    cursor: default;
+.list-head .todo-card__action:hover {
+    background-color: unset;
 }
 
 .list-head .todo-item__text {
@@ -227,6 +227,26 @@ body::before { /** for margin collapsing */
 .list-head .todo-item__text:focus {
     font-size: 16px;
 }
+
+.loader-icon {
+    width: 25px;
+    height: 25px;
+    border: 5px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spinner 3s cubic-bezier(.56, 1.01, 1, 1) infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(1440deg);
+    }
+}
+
 
 .todo-card {
     background-color: var(--todo-card-bg-color);
@@ -275,11 +295,11 @@ body::before { /** for margin collapsing */
     align-items: center;
 }
 
-.todo-item__checkbox input[type="checkbox"]:checked + .checkbox {
+.todo-item__checkbox input[type="checkbox"]:checked+.checkbox {
     background: var(--checkbox-background-color);
 }
 
-.todo-item__checkbox input[type="checkbox"]:checked + .checkbox .checkbox--checked {
+.todo-item__checkbox input[type="checkbox"]:checked+.checkbox .checkbox--checked {
     background-image: url('../images/icon-check.svg');
     width: 10px;
     height: 10px;
@@ -310,7 +330,7 @@ body::before { /** for margin collapsing */
     background-color: var(--light-grayish-blue);
 }
 
-.todo-card__action:hover > div {
+.todo-card__action:hover>div {
     filter: brightness(1);
 }
 
@@ -322,7 +342,7 @@ body::before { /** for margin collapsing */
     height: 15px;
     margin: 0 8px;
     cursor: pointer;
-    filter : var(--todo-card__action-filter);
+    filter: var(--todo-card__action-filter);
 }
 
 .todo-list {
@@ -342,13 +362,13 @@ body::before { /** for margin collapsing */
     /* background-color: var(--light-grayish-blue); */
 }
 
-.todo-list .todo-card:not(:last-child):hover{
+.todo-list .todo-card:not(:last-child):hover {
     cursor: pointer;
 }
 
-.todo-list .todo-card:not(:last-child):hover{
+.todo-list .todo-card:not(:last-child):hover {
     background-color: #e4e1e1;
-    background-color : var(--todo-card-bg-color-hover);
+    background-color: var(--todo-card-bg-color-hover);
 }
 
 .todo-list .todo-card:last-child {
