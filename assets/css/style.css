@@ -102,7 +102,12 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    transition: .5s;
+    /* -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s; */
+    
+    transition-property: color ,background-color, box-shadow, border, filter, background;
+    transition-duration: 0.5s;
     /*transition: color, .05s; /*? slow todo item text color transition */
 }
 
@@ -285,6 +290,11 @@ body::before { /** for margin collapsing */
     all: unset;
     font-size: 14px;
     width: 100%;
+}
+
+.todo-item__text--done {
+    text-decoration: line-through;
+    opacity: 0.25;
 }
 
 .todo-card__action {
