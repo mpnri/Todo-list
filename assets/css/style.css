@@ -71,7 +71,7 @@
 
     --light-bg-image-small: url('/assets/images/bg-mobile-light.jpg');
     --light-bg-image-large: url('/assets/images/bg-desktop-light.jpg');
-    --light-close-filter: none;
+    --light-action-filter: none;
 
     /** Dark Theme */
     --very-dark-blue: hsl(235, 21%, 11%);
@@ -84,7 +84,7 @@
 
     --dark-bg-image-small: url('/assets/images/bg-mobile-dark.jpg');
     --dark-bg-image-large: url('/assets/images/bg-desktop-dark.jpg');
-    --dark-close-filter: brightness(3);
+    --dark-action-filter: brightness(3);
 
     /** Default Theme */
     --body-background: var(--very-light-gray);
@@ -93,7 +93,7 @@
     --bg-header-large: var(--light-bg-image-large);
     --todo-card-bg-color: var(--very-light-gray);
     --todo-card-bg-color-hover: var(--light-grayish-blue-hover);
-    --todo-card__close-filter: var(--light-close-filter);
+    --todo-card__action-filter: var(--light-action-filter);
     --todo-card-border-color: var(--very-light-grayish-blue);
     /* TODO: Add hover and other effects and animations */
 }
@@ -103,7 +103,7 @@
 *::after {
     box-sizing: border-box;
     transition: .3s;
-    /*transition: color, .05s; /*? slow todo itemtext color transition */
+    /*transition: color, .05s; /*? slow todo item text color transition */
 }
 
 body {
@@ -136,11 +136,11 @@ body::before { /** for margin collapsing */
         background-image: var(--bg-header-large);
     }
     
-    .todo-card__close {
+    .todo-card__action > div {
         visibility: hidden;
     }
 
-    .todo-list .todo-card:hover .todo-card__close {
+    .todo-list .todo-card:hover .todo-card__action > div {
         visibility: visible;
     }
 }
@@ -201,7 +201,11 @@ body::before { /** for margin collapsing */
     gap: 1.3rem;
 }
 
-.list-head .todo-card__close{
+.list-head .todo-card {
+    box-shadow: 0px 1px 12px 0px #707070;
+}
+
+.list-head .todo-card__action{
     transition: none;
     visibility: hidden;
 }
@@ -218,8 +222,9 @@ body::before { /** for margin collapsing */
     background-color: var(--todo-card-bg-color);
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    gap: 5px;
+    /* justify-content: space-evenly;
+    gap: 5px; */
+    padding-inline-start: 4%;
     border-radius: 6px;
     /*? padding: 1.8rem 0; */
     /*? height: 50px; */
@@ -231,6 +236,7 @@ body::before { /** for margin collapsing */
     display: flex;
     align-items: center;
     width: 80%;
+    flex-grow: 1;
     height: 100%;
     gap: 1.8rem;
 }
@@ -276,7 +282,24 @@ body::before { /** for margin collapsing */
     width: 100%;
 }
 
-.todo-card__close {
+.todo-card__action {
+    width: 14%;
+    min-width: 55px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-card__action:hover {
+    background-color: var(--light-grayish-blue);
+}
+
+.todo-card__action:hover > div {
+    
+}
+
+.close-icon {
     transition: none;
     background-image: url('../images/icon-cross.svg');
     background-size: cover;
@@ -284,7 +307,7 @@ body::before { /** for margin collapsing */
     height: 15px;
     margin: 0 8px;
     cursor: pointer;
-    filter : var(--todo-card__close-filter);
+    /* filter : var(--todo-card__action-filter); */
 }
 
 .todo-list {
@@ -298,6 +321,14 @@ body::before { /** for margin collapsing */
 .todo-list .todo-card {
     border-bottom: 1px solid var(--todo-card-border-color);
     border-radius: 0;
+}
+
+.todo-list .todo-item:hover {
+    /* background-color: var(--light-grayish-blue); */
+}
+
+.todo-list .todo-card:not(:last-child):hover{
+    cursor: pointer;
 }
 
 .todo-list .todo-card:not(:last-child):hover{
@@ -326,7 +357,7 @@ body::before { /** for margin collapsing */
 
 .toolbar .todo-card {
     justify-content: center;
-    gap: 1.5rem;
+    /* gap: 1.5rem; */
 }
 
 .todo-card__toolbar {
@@ -334,10 +365,19 @@ body::before { /** for margin collapsing */
     color: var(--dark-grayish-blue);
     font-weight: 700;
     cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-inline: 1rem;
 }
 
 .todo-card__toolbar--active {
     color: var(--bright-blue);
+    cursor: default;
+}
+
+.todo-card__toolbar:not(.todo-card__toolbar--active):hover {
+    background-color: var(--todo-card-bg-color-hover);
 }
 
 .drag-drop {
