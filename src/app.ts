@@ -107,15 +107,28 @@ document.querySelector('.toolbar>.todo-card')?.addEventListener('click', e => {
 });
 
 let timer;
-document.getElementById('add-todo')?.addEventListener('input', e => {
-    document.getElementById('spinner')?.classList.remove('action--checked');
+const spinnerElm = document.getElementById('spinner') as HTMLDivElement;
+const addTodoElm = document.getElementById('add-todo') as HTMLInputElement;
+addTodoElm.addEventListener('input', e => {
+    spinnerElm.classList.remove('action--checked');
     clearTimeout(timer);
-    document.getElementById('spinner')?.classList.add('loader-icon');
-    timer = setTimeout(() => {        
-        document.getElementById('spinner')?.classList.remove('loader-icon');
+    spinnerElm.classList.add('loader-icon');
+    timer = setTimeout(() => {
+        spinnerElm.classList.remove('loader-icon');
         if ((e.target as HTMLInputElement).value)
-            document.getElementById('spinner')?.classList.add('action--checked');
+            spinnerElm.classList.add('action--checked');
+        timer = null;
     }, 2000);
+});
+
+document.getElementById('add-todo-item')?.addEventListener('submit', e => {
+    e.preventDefault();
+    if (addTodoElm.value && !timer) {
+        todoItems.push({ id: todoItems.length, text: addTodoElm.value, done: false });
+        addTodoElm.value = '';
+        spinnerElm.classList.remove('action--checked');
+        renderItems();
+    }
 });
 
 renderTheme();
@@ -131,7 +144,7 @@ function renderItems() {
         filter === 'active'
             ? !item.done
             : filter === 'completed'
-            ? item.done : true);
+                ? item.done : true);
     filterList.forEach((item: todoItem) => todoListElm.appendChild(TodoItem(item)));
 
     //* add todo control card

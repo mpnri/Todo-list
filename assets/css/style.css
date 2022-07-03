@@ -364,12 +364,27 @@ body::before {
     box-shadow: 0 5px 15px 0px #80808036;
     border-radius: 6px;
     overflow: hidden;
+    background: none;
 }
 
 .todo-list .todo-card {
     border-bottom: 1px solid var(--todo-card-border-color);
     border-radius: 0;
 }
+
+/* .todo-list .todo-card {
+    animation: loading-item .5s linear;
+}
+
+@keyframes loading-item {
+    from {
+        transform: translateY(-20px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+} */
 
 .todo-list .todo-item:hover {
     /* background-color: var(--light-grayish-blue); */
