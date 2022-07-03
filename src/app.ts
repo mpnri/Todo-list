@@ -34,18 +34,17 @@ type todoItem = {
     done: boolean
 }
 
-let theme = THEMES.LIGHT, filter = 'all'; //todo: read from storage
+let theme = localStorage.getItem('theme') ?? THEMES.LIGHT,
+    filter = localStorage.getItem('filter') ?? 'all';
 
 document.querySelector('.header__icon')?.addEventListener('click', e => {
-    const target = (e.currentTarget as HTMLDivElement).children[0] as HTMLImageElement;
     theme = theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT;
-
-    target.src = theme === THEMES.LIGHT ? moon : sun;
     renderTheme();
 })
 
-// todo: read from storage
-let todoItems: todoItem[] = [
+let todoItems: todoItem[] = localStorage.getItem('todoItems')
+                            ? JSON.parse(localStorage.getItem('todoItems')!) 
+                            : [
     { id: 0, text: 'Complete online JavaScript course', done: true },
     { id: 1, text: 'Jog around the park 3x', done: false },
     { id: 2, text: '10 minutes meditation', done: false },
@@ -103,6 +102,7 @@ document.querySelector('.toolbar>.todo-card')?.addEventListener('click', e => {
     const target = e.target as HTMLDivElement;
     target.classList.add('todo-card__toolbar--active');
     filter = target.id;
+    localStorage.setItem('filter', filter);
     renderItems();
 });
 
@@ -135,11 +135,17 @@ renderTheme();
 renderItems();
 
 function renderTheme() {
+    const icon = (document.querySelector('.header__icon img') as HTMLImageElement);
+    icon.src = theme === THEMES.LIGHT ? moon : sun;
+
     Object.keys(styles[theme]).forEach(key => document.documentElement.style.setProperty(key, styles[theme][key]));
+    localStorage.setItem('theme', theme);
 }
 
 function renderItems() {
     todoListElm.innerHTML = '';
+    localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
     const filterList = todoItems.filter((item: todoItem) =>
         filter === 'active'
             ? !item.done
