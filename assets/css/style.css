@@ -146,8 +146,8 @@ body::before {
         visibility: hidden;
     }
 
-    .todo-list .todo-card:hover .todo-card__action>div {
-        visibility: visible;
+    .todo-list .todo-card:hover .todo-card__action > div {
+        visibility: visible !important;
     }
 }
 
