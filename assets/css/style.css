@@ -146,7 +146,7 @@ body::before {
         visibility: hidden;
     }
 
-    .todo-list .todo-card:hover .todo-card__action > div {
+    .todo-list .todo-card:hover .todo-card__action>div {
         visibility: visible !important;
     }
 }
@@ -229,12 +229,25 @@ body::before {
 }
 
 .loader-icon {
+    /** when event input(onChange) called */
     width: 25px;
     height: 25px;
     border: 5px solid #f3f3f3;
-    border-top: 4px solid #3498db;
+    /* border-top: 4px solid #3498db; */
+    /* border-top: 4px solid #34db5e; */
+    border-top: 4px solid #869AF9;
     border-radius: 50%;
     animation: spinner 3s cubic-bezier(.56, 1.01, 1, 1) infinite;
+}
+
+.todo-card__action .action--checked {
+    /** spinner finished */
+    width: 20px;
+    height: 20px;
+    border-radius: 36%;
+    background-image: url('/assets/images/icon-check.svg') !important;
+    background-size: cover;
+    filter: brightness(1.0) invert(61%) sepia(98%) saturate(369%) hue-rotate(80deg) brightness(96%) contrast(90%) !important;
 }
 
 @keyframes spinner {
@@ -331,7 +344,7 @@ body::before {
 }
 
 .todo-card__action:hover>div {
-    filter: brightness(1);
+    filter: brightness(1.0);
 }
 
 .close-icon {

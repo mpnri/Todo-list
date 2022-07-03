@@ -108,10 +108,13 @@ document.querySelector('.toolbar>.todo-card')?.addEventListener('click', e => {
 
 let timer;
 document.getElementById('add-todo')?.addEventListener('input', e => {
+    document.getElementById('spinner')?.classList.remove('action--checked');
     clearTimeout(timer);
     document.getElementById('spinner')?.classList.add('loader-icon');
-    timer = setTimeout(() => {
+    timer = setTimeout(() => {        
         document.getElementById('spinner')?.classList.remove('loader-icon');
+        if ((e.target as HTMLInputElement).value)
+            document.getElementById('spinner')?.classList.add('action--checked');
     }, 2000);
 });
 
