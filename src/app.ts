@@ -1,5 +1,6 @@
 import sun from '../assets/images/icon-sun.svg';
 import moon from '../assets/images/icon-moon.svg';
+import Sortable from 'sortablejs';
 
 enum THEMES {
     LIGHT = 'LIGHT',
@@ -57,6 +58,7 @@ const todoListElm = document.getElementById('todo-list') as HTMLDivElement;
 const TodoItem = (item: todoItem) => {
     const todoCard = document.createElement('div');
     todoCard.className = 'todo-card';
+    todoCard.draggable = true;
 
     const todoItem = document.createElement('div');
     todoItem.className = 'todo-item';
@@ -134,6 +136,7 @@ document.getElementById('add-todo-item')?.addEventListener('submit', e => {
 renderTheme();
 renderItems();
 
+
 function renderTheme() {
     const icon = (document.querySelector('.header__icon img') as HTMLImageElement);
     icon.src = theme === THEMES.LIGHT ? moon : sun;
@@ -162,4 +165,16 @@ function renderItems() {
         renderItems();
     });
     todoListElm.appendChild(todoControl);
+
+    // add drag and drop effect
+    document.querySelectorAll('.todo-list').forEach( (card:any) => {
+        if (true) {
+            new Sortable(card, {
+                group: "shared",
+                // filter: '.todo-list__control',
+                animation: 150,
+                ghostClass: "blue-background-class"
+            });
+        }
+    })
 }
